@@ -21,17 +21,18 @@ int			profile(void *mlx, void *window, int x, int y)
 	int		height;
 
 	pixmap = mlx_xpm_file_to_image(mlx, "xpm/matvivan.xpm", &w, &height);
-	mlx_put_image_to_window(mlx, window, pixmap, x, y + 2);
+	mlx_put_image_to_window(mlx, window, pixmap, x + 2, y + 4);
 	w /= 2;
+	w += 2;
 	i = -w;
-	while (i < w)
+	while (i < w + 2)
 	{
 		j = -w;
-		while (j < w)
+		while (j < w + 2)
 		{
 			if ((i * i + j * j) > w * w)
 				mlx_pixel_put(mlx, window, x + i + w, y + j + w, 0xB5B5B5);
-			if (i * i + j * j > 499 && i * i + j * j < 581)
+			if (i * i + j * j >= 490 && i * i + j * j <= 580)
 				mlx_pixel_put(mlx, window, x + i + w, y + j + w, 0xFF0000);
 			++j;
 		}
